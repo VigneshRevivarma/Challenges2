@@ -1,27 +1,22 @@
-package com.example.Challenges2.model;
+package com.example.Challenges2.dao;
 
 import java.sql.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
-
-
-@Entity
-@Table(name = "account")
-@EntityListeners(AuditingEntityListener.class)
-public class Account {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+public class AccountDao {
     private int id;
-
-    @Column(name = "accType")
     private String accType;
     private String accNumber;
     private String accName;
     private int balance;
     private Date date;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getAccType() {
         return accType;
@@ -63,19 +58,11 @@ public class Account {
         this.date = date;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
         return "{" +
                 "id=" + id +
-                ", acctype='" + accType + '\'' +
+                ", accType='" + accType + '\'' +
                 ", accNumber='" + accNumber + '\'' +
                 ", accName='" + accName + '\'' +
                 ", balance=" + balance +
